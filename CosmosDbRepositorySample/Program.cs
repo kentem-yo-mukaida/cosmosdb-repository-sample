@@ -6,6 +6,7 @@ builder.Services.AddCosmosRepository(options =>
 {
     options.CosmosConnectionString = builder.Configuration["CosmosDbConnection"];
     options.DatabaseId = "RepsitorySampleDb";
+    options.ContainerPerItemType = true;
     options.ContainerBuilder.Configure<Person>(q => q.WithContainer(nameof(Person) + "s").WithPartitionKey("/customer/id"));
     options.ContainerBuilder.Configure<Pet>(q => q.WithContainer(nameof(Pet) + "s").WithPartitionKey("/owner/id"));
 });
