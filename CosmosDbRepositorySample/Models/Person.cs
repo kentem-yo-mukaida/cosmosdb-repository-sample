@@ -14,7 +14,7 @@ namespace CosmosDbRepositorySample.Models
         [JsonProperty("customer")]
         public CustomerObject Customer { get; set; } = null!;
 
-        protected override string GetPartitionKeyValue() => "/customer/id";
+        protected override string GetPartitionKeyValue() => Customer.Id;
 
         public class CustomerObject
         {
